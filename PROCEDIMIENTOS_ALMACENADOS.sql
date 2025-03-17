@@ -79,7 +79,6 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20001, 'Hubo un error... Porfavor, validar los datos nuevamente.');
     END IF;
 
-    -- Actualizar el hospital con los nuevos valores
     UPDATE hospital
     SET 
         idDistrito = v_idDistrito,
@@ -183,7 +182,6 @@ BEGIN
     
 EXCEPTION
     WHEN OTHERS THEN
-        -- Manejo de excepciones, en caso de error
         DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
 END SP_HOSPITAL_LISTAR;
 /
