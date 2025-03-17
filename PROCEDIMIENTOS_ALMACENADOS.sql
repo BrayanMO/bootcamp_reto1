@@ -150,7 +150,7 @@ END SP_HOSPITAL_ELIMINAR;
 /* >>>>>>>>>   SP_HOSPITAL_LISTAR <<<<<<<< */
 
 CREATE OR REPLACE PROCEDURE SP_HOSPITAL_LISTAR (
-    v_idHospital IN NUMBER DEFAULT NULL  -- Parámetro opcional para el ID del hospital
+    v_idHospital NUMBER DEFAULT NULL 
 ) IS
     cursor l_hospitales  IS 
     SELECT h.idHospital, h.nombre, d.descDistrito, s.descSede, g.descGerente, c.descCondicion, h.fechaRegistro
@@ -167,10 +167,14 @@ BEGIN
     FOR r_hospital IN l_hospitales
     LOOP
         v_encontrado := TRUE;
-        DBMS_OUTPUT.PUT_LINE('ID: ' || r_hospital.idHospital || ', Nombre: ' || r_hospital.nombre || 
-                             ', Distrito: ' || r_hospital.descDistrito || ', Sede: ' || r_hospital.descSede || 
-                             ', Gerente: ' || r_hospital.descGerente || ', Condición: ' || r_hospital.descCondicion || 
-                             ', Fecha Registro: ' || TO_CHAR(r_hospital.fechaRegistro, 'DD-MM-YYYY'));
+        DBMS_OUTPUT.PUT_LINE('ID Hospital: ' || r_hospital.idHospital); 
+        DBMS_OUTPUT.PUT_LINE('Nombre: ' || r_hospital.nombre);  
+        DBMS_OUTPUT.PUT_LINE('Distrito: ' || r_hospital.descDistrito); 
+        DBMS_OUTPUT.PUT_LINE('Sede: ' || r_hospital.descSede); 
+        DBMS_OUTPUT.PUT_LINE('Gerente: ' || r_hospital.descGerente); 
+        DBMS_OUTPUT.PUT_LINE('Condición: ' || r_hospital.descCondicion);  
+        DBMS_OUTPUT.PUT_LINE('Fecha de Registro: ' || TO_CHAR(r_hospital.fechaRegistro, 'YYYY-MM-DD'));  
+        DBMS_OUTPUT.PUT_LINE('>>>>>>>>>>>><<<<<<<<<<<<<<<<<');
     END LOOP;
     
     IF NOT v_encontrado THEN

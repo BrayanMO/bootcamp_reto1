@@ -48,6 +48,3 @@ BEGIN
     --SP_HOSPITAL_LISTAR(v_idHospital => 1); 
 END;
 /
-
-
-
